@@ -29,29 +29,29 @@ print(paste("Max: ",max(y),"\nMin: ",min(y)))
 tr=(max(y)-min(y))/m
 print (paste("∆≔R/m=(max-min)/10: ",tr))
 
-#4
+#4?
 y <- array(y, dim = c(10, 10))
 x<-c()
 
 elements<-c()
 #print (which(y==137.484))
 
-for (j in 1:m*10)
-for (k in 1:(m-1)){
-    if(j/10!=1){
-        elements<-c(y[j])
-    }
-    else{
-        el<-y[j,k]*min(elements)+(tr/2)*(2*j-1)
-    }
-    
-    #print (y[j])
+for (j in 1:m*10){
+    elements<-c()
 
-    #el<-y[j,k]*min(y)+(tr/2)*(2*j-1)
-    #print (paste("El: ", y[j,k], "  R ",j," ",k))
-    #x<-c(x,el)
-    #x<-append(el)
+    for (i in 1:10){
+    if(j/10==i){
+        break}
+    else{
+        elements<-c(elements, y[j])
+    }}
+
+    
+    print (elements)
+    areas <- c(areas, y[j]*min(elements)+(tr/2)*(2*j-1))
+    #el<-y[j,k]*min(elements)+(tr/2)*(2*j-1)
 }
+print (paste("Areas: ",areas))
 
 
 #for (j in 1:m)
@@ -94,7 +94,8 @@ for (i in 1:length(y)){
     }
 }
 area <- c(area0,area1,area2,area3,area4,area5,area6)
-print (paste(" Area: ",area))
+print (" Area: ")
+print (area)
 
 #6
 hist(area)
@@ -103,6 +104,7 @@ polygon(area) #!?
 #7
 
 #   !? for (j in 1:m)  for (k in 1:(m-1))
+'
 a<-c()
 for (j in 0:m)
 for (k in 0:m) {
@@ -117,6 +119,20 @@ for (k in 0:m) {
     el<-a[j,k]*tr
     b<-c(b,el)
 }
+'
+
+'
+for (j in 1:m*10){
+    for (i in 1:10){
+    if(j/10!=i){
+        elements<-c(y[j])
+    }
+    else{
+        a <- c(areas, y[j]*min(elements)+(tr/2)*(2*j-1))
+        #el<-y[j,k]*min(elements)+(tr/2)*(2*j-1)
+    }}
+}
+'
 
 #8
 polygon(b)
