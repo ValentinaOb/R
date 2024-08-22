@@ -33,24 +33,72 @@ print (paste("∆≔R/m=(max-min)/10: ",tr))
 y <- array(y, dim = c(10, 10))
 x<-c()
 
-for (j in 1:m)
-for (k in 1:(m-1)) {
-    el<-y[j,k]*min(y)+(tr/2)*(2*j-1)
-    #print (paste("El: ",el))
-    x<-c(x,el)
+elements<-c()
+#print (which(y==137.484))
+
+for (j in 1:m*10)
+for (k in 1:(m-1)){
+    if(j/10!=1){
+        elements<-c(y[j])
+    }
+    else{
+        el<-y[j,k]*min(elements)+(tr/2)*(2*j-1)
+    }
+    
+    #print (y[j])
+
+    #el<-y[j,k]*min(y)+(tr/2)*(2*j-1)
+    #print (paste("El: ", y[j,k], "  R ",j," ",k))
+    #x<-c(x,el)
     #x<-append(el)
 }
+
+
+#for (j in 1:m)
+#for (k in 1:(m-1)) {
+#    el<-y[j,k]*min(y)+(tr/2)*(2*j-1)
+#    #print (paste("El: ",el))
+#    x<-c(x,el)
+#    #x<-append(el)
+#}
 
 print (paste(" X: ",x))
 
 #5  ?
-
-
-
+area0<-0
+area1<-0
+area2<-0
+area3<-0
+area4<-0
+area5<-0
+area6<-0
+for (i in 1:length(y)){
+    if(y[i]<120){ area0<-area0+1}
+    else if (y[i]>120 && y[i]<130) {
+       area1<-area1+1
+    }
+    else if (y[i]>130 && y[i]<140) {
+       area2<-area2+1
+    }
+    else if (y[i]>140 && y[i]<150) {
+       area3<-area3+1
+    }
+    else if (y[i]>150 && y[i]<160) {
+       area4<-area4+1
+    }
+    else if (y[i]>160 && y[i]<170) {
+       area5<-area5+1
+    }
+    else{
+        area6<-area6+1
+    }
+}
+area <- c(area0,area1,area2,area3,area4,area5,area6)
+print (paste(" Area: ",area))
 
 #6
-hist(x)
-polygon(x) #!?
+hist(area)
+polygon(area) #!?
 
 #7
 
@@ -61,6 +109,7 @@ for (k in 0:m) {
     el<-y[j,k]*min(y)+tr*(j-1)
     a<-c(a,el)
 }
+#print (paste(" A: ",a))
 
 b<-c()
 for (j in 0:m)
